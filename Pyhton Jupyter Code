@@ -1,0 +1,26 @@
+import pandas as pd
+import numpy as np
+import plotly.express as px
+import plotly.graph_objects as go
+data=pd.read_csv("apple_products (1).csv")
+data
+print(data.describe())
+   
+Top RAting Iphone Sale in india
+highest_rating = data.sort_values(by=["Star Rating"],ascending=False)
+highest_rated=highest_rating.head(10)
+highest_rated
+print(highest_rated["Product Name"])
+
+iphone = highest_rated["Product Name"].value_counts()
+labels = iphone.index
+count = highest_rated['Number Of Ratings']
+figure = px.bar(highest_rated , x=labels, y=count, title='No of ratings of highest rated platform')
+figure.show()
+iphone = highest_rated["Product Name"].value_counts()
+labels1 = iphone.index
+count1 = highest_rated['Number Of Reviews']
+figure = px.bar(highest_rated , x=labels1, y=count1, title='No of ratings of highest rated platform')
+figure.show()
+figure = px.scatter(data_frame = data , x="Number Of Ratings", y="Sale Price", size="Discount Percentage",trendline="ols", title="Relationship between sles price and number of ratings")
+figure.show()
